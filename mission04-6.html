@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>國立歷史博物館-人生不卡關</title>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js" ></script>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <div class="left"><img src="img/icon-arrow.png" alt="人生不卡關" class="headicon" onclick="history.back()"></div>
+                <div class="right"><img src="img/icon-timer.png" alt="人生不卡關" class="headicon"><small>00:00:00</small></div>
+                <img src="img/headlogo.png" alt="人生不卡關" class="headlogo">
+            </div>
+        </header>
+
+        <main role="main" class="inner cover2">
+            <h6 class="title">資料夾中的神祕手稿提到了業鏡與寶樹，對照調查資料與地圖，其中一棵老樹或許就是寶樹。 </h6>
+            <form class="mt-5">                      
+                <div class="form-group form-inline">                            
+                    <label for="exampleInputEmail1" class="mr-2">寶樹所在位置 : </label>
+                    <input type="email" class="form-control" placeholder="輸入答案">
+                </div>
+                <p class="text-left">(3字)</p>
+                <p class="text-center"><img src="img/img_btn1.png" alt="提示" data-toggle="modal" data-target="#myModal2"></p>
+            </form>
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="d-flex justify-content-center h-100" >
+                <div class=" flex-fill align-self-end"><img src="img/icon-info2.png" alt="訊息" class="footericon"  data-toggle="modal" data-target="#myModal"></div>
+                <div class=" flex-fill "><a href="mission04-6-sucess.html"><img src="img/icon-submit.png" alt="確認" class="footericon2"></a></div>
+                <div class=" flex-fill align-self-end"><a href="#"><img src="img/icon-clear.png" class="footericon"></a></div>
+              </div>
+        </footer>
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+            $('#myModal2').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="title mb-3"><img src="img/img-headshot.png" alt="匿名" class="img-align mr-2">匿名</h5>
+                  <p class=" mb-0">老樹；地圖；古亭某福德宮旁。</p>
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <p class="text-center mb-0">廟宇名稱</p>
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>
