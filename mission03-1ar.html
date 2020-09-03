@@ -1,52 +1,99 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>國立歷史博物館-人生不卡關</title>
-
     
+    <script src='https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js'></script>
+    <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 
-    <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat:no-repeat;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="css/style2.css" rel="stylesheet">
-    <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js" ></script>
-  </head>
-  <body class="text-center">
-    <div class="cover-container2 d-flex w-100 h-100 mx-auto flex-column">
+  a-scene{
+    
+  }
+  .tops{
+    background-image:url('img/ar-camra2.png'); 
+    height: 100%;
+    position: relative;
+    /* background-color: rgb(238, 255, 0);  */
+    background-repeat:no-repeat;
+    background-position: center;
+    -moz-background-size: 55% auto;
+    -webkit-background-size:55% auto;
+    -o-background-size:55% auto;
+    background-size:55% auto;
+  }
+  .topic{
+      width:100%;
+      text-align: center;
+    position: absolute;
+    bottom:10px;
+    left:0;
+    z-index: 9999;
+    color:#000;
+  }
+  .topic img{
+    vertical-align: middle;
+  }
+</style>
+</head>
 
-        <main role="main" class="inner">
-            <div class="mission ar-div">
-                <img src="img/ar-camra2.png" alt="">
-                <p class="ar-title">請掃描圖卡<a href="mission03-1.html"><img width="30px" src="img/icon-close.png" alt="關閉業鏡" class="ar-close img-align ml-3"></a></p>
-            </div>
-        </main>
-</div>
+
+
+<body style='margin : 0px; overflow: hidden;'>
+  <div class="arjs-loader">
+    <div>載入中， 請稍候...</div>
+  </div>
+  <div class="tops">
+    <div class="topic">請掃描圖片 <img width="35" src="img/goback.png" alt="關閉業鏡" onclick="history.back()" style="margin-left: 10px;"></div>
+    <a-scene
+        vr-mode-ui='enabled: false;'
+        renderer="logarithmicDepthBuffer: true;"
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+        <a-nft
+            type='nft' url='https://bavistyc.github.io/NMHarweb/img_desc/marker_6'
+            smooth='true' smoothCount='1' smoothTolerance='0.01' smoothThreshold='2'>
+			<!-- åœ–ç‰‡-->
+            <!-- <a-entity geometry="primitive:plane;" material="src:#img1" rotation="-90 0 0" scale="100 100 100"
+                position="5 0 0"></a-entity>-->
+			<!--GIF-->
+           <a-entity >
+                <a-image src="https://bavistyc.github.io/NMHarweb/img_ar/img_6.png"
+                scale="250 250 250"
+                position="70 0 -180"
+                rotation="-90 0 0"
+                crossorigin
+            ></a-image>
+           </a-entity>
+        </a-nft>
+
+		<a-entity camera></a-entity>
+    </a-scene>
+  </div>
 </body>
 </html>
