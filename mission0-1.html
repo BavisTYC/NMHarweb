@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
+    <meta name="description" content="國立歷史博物館-人生不卡關">
+    <meta name="author" content="國立歷史博物館">
     <title>國立歷史博物館-人生不卡關</title>
 
 
@@ -36,7 +35,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
 
     <script>
         window.onload = function() {
@@ -52,6 +50,23 @@
             $('#startLon').val(startPos.coords.longitude);
             var distVal = distance(startPos.coords.latitude, startPos.coords.longitude, targetPos.latitude, targetPos.longitude);
             $('#dist').val(distVal);
+            if (distVal<.2){
+              $("#geoCheck h2").html("抵達目的地");
+              $("#geoCheck p").html("");
+              $("#geoCheck img").attr("src", "img/img_gps3.png");
+              $("#footer").show();
+            }else if(distVal<.5){
+              $("#geoCheck h2").html("前往蓮花池");
+              $("#geoCheck p").html("燈號閃爍代表接近目的");
+              $("#geoCheck img").attr("src", "img/img_gps.gif");
+              $("#footer").hide();
+            }else{
+              $("#geoCheck h2").html("前往蓮花池");
+              $("#geoCheck p").html("燈號閃爍代表接近目的");
+              $("#geoCheck img").attr("src", "img/img_gps2.png");
+              $("#geoCheck small").html("距離 : " + Math.round(distVal*1000) + " 公尺");
+              $("#footer").hide();
+            };
           };
           var geoError = function(position) {
             console.log('Error occurred. Error code: ' + error.code);
@@ -115,20 +130,21 @@
                 <img src="img/headlogo.png" alt="人生不卡關" class="headlogo">
             </div>
         </header>
-        <input type="text" id="startLat" />
+        <!-- <input type="text" id="startLat" />
         <input type="text" id="startLon" />
-        <input type="text" id="dist" />
-        <main role="main" class="inner cover">
+        <input type="text" id="dist" /> -->
+        <main role="main" class="inner cover" id="geoCheck">
             <div class="mission-img">
-                <img src="img/img_gps2.png" alt="" class="img-responsive">
+                <img src="" alt="" class="img-responsive">
             </div>
-            <h2 class="title mt-3">前往蓮花池</h2>
-            <p class="mt-3">燈號閃爍代表接近目的</p>
+            <h2 class="title mt-3"></h2>
+            <small></small>
+            <p class="mt-3"></p>
         </main>
-        <footer class="mastfoot mt-auto">
+        <footer class="mastfoot mt-auto" id="footer">
             <div class="d-flex h-100 justify-content-center ">
                 <div class=" flex-fill align-self-end"><img src="img/icon-info.png" alt="訊息" class=" footericon" data-toggle="modal" data-target="#myModal"></div>
-                <div class=" flex-fill  "><a href="mission0-2.html"><img src="img/icon-submit.png" alt="確認" class="footericon2"></a></div>
+                <div class=" flex-fill  "><a href="mission0-3.html"><img src="img/icon-submit.png" alt="確認" class="footericon2"></a></div>
                 <div class=" flex-fill align-self-end"><img src="img/icon-clear.png" class="footericon"></div>
             </div>
         </footer>

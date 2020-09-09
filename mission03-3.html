@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
+    <meta name="description" content="國立歷史博物館-人生不卡關">
+    <meta name="author" content="國立歷史博物館">
     <title>國立歷史博物館-人生不卡關</title>
 
     
@@ -36,7 +35,90 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js" ></script>
+  <script>
+    window.onload = function() {
+      var startPos, targetPos;
+      //前往牯嶺街郵幣街聚落
+      targetPos = {
+          latitude : 25.031972,
+          longitude: 121.511000
+      };
+      var geoSuccess = function(position) {
+        startPos = position;
+        $('#startLat').val(startPos.coords.latitude);
+        $('#startLon').val(startPos.coords.longitude);
+        var distVal = distance(startPos.coords.latitude, startPos.coords.longitude, targetPos.latitude, targetPos.longitude);
+        $('#dist').val(distVal);
+        if (distVal<.2){
+          $("#geoCheck h2").html("抵達目的地");
+          $("#geoCheck p").html("");
+          $("#geoCheck img").attr("src", "img/img_gps3.png");
+          $("#footer").show();
+        }else if(distVal<.5){
+          $("#geoCheck h2").html("前往牯嶺街郵幣街聚落");
+          $("#geoCheck p").html("燈號閃爍代表接近目的");
+          $("#geoCheck img").attr("src", "img/img_gps.gif");
+          $("#footer").hide();
+        }else{
+          $("#geoCheck h2").html("前往牯嶺街郵幣街聚落");
+          $("#geoCheck p").html("燈號閃爍代表接近目的");
+          $("#geoCheck img").attr("src", "img/img_gps2.png");
+          $("#geoCheck small").html("距離 : " + Math.round(distVal*1000) + " 公尺");
+          $("#footer").hide();
+        };
+      };
+      var geoError = function(position) {
+        console.log('Error occurred. Error code: ' + error.code);
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from location provider)
+        //   3: timed out
+      };
+      navigator.geolocation.watchPosition(geoSuccess, geoError);
+    };
+
+/*    
+    var gpsX = "";
+    var gpsY = "";
+    function showPosition(position) {
+        gpsX = position.coords.latitude;
+        gpsY = position.coords.longitude;
+        //alert(gpsX);
+        $('#gpsX').val(gpsX);
+        $('#gpsY').val(gpsY);
+    }
+
+    $(function () {
+        // Handler for .ready() called.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+
+    });
+*/
+    /** Converts numeric degrees to radians */
+    if (typeof(Number.prototype.toRad) === "undefined") {
+      Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+      }
+    }
+    function distance(lon1, lat1, lon2, lat2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = (lat2 - lat1).toRad();  // Javascript functions in radians
+        var dLon = (lon2 - lon1).toRad();
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+
+/**/</script>
   </head>
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
@@ -48,17 +130,18 @@
             </div>
         </header>
 
-        <main role="main" class="inner cover">
+        <main role="main" class="inner cover" id="geoCheck">
             <div class="mission-img">
                 <img src="img/img_gps2.png" alt="" class="img-responsive">
             </div>
-            <h2 class="title mt-1">前往牯嶺街郵幣街聚落</h2>
-            <p class="mt-3">燈號閃爍代表接近目的</p>
+            <h2 class="title mt-1"></h2>
+            <small></small>
+            <p class="mt-3"></p>
         </main>
-        <footer class="mastfoot mt-auto">
+        <footer class="mastfoot mt-auto" id="footer">
             <div class="d-flex justify-content-center h-100" >
                 <div class=" flex-fill align-self-end" ><img src="img/icon-info.png" alt="訊息" class=" footericon" data-toggle="modal" data-target="#myModal"></div>
-                <div class=" flex-fill "><a href="mission03-3c.html"><img src="img/icon-submit.png" alt="確認" class="footericon2"></a></div>
+                <div class=" flex-fill "><a href="mission03-3-1.html"><img src="img/icon-submit.png" alt="確認" class="footericon2"></a></div>
                 <div class=" flex-fill align-self-end"><img src="img/icon-clear.png" class="footericon"></div>
               </div>
         </footer>
