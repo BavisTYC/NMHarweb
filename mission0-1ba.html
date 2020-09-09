@@ -37,29 +37,6 @@
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
     <script src="js/bootstrap.js" ></script>
-
-    <script>
-        var gpsX = "";
-        var gpsY = "";
-        function showPosition(position) {
-            gpsX = position.coords.latitude;
-            gpsY = position.coords.longitude;
-            //alert(gpsX);
-            $('#gpsX').val(gpsX);
-            $('#gpsY').val(gpsY);
-        }
-
-        $(function () {
-            // Handler for .ready() called.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-            else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-
-      }); 
-    </script>   
   </head>
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
@@ -70,8 +47,7 @@
                 <img src="img/headlogo.png" alt="人生不卡關" class="headlogo">
             </div>
         </header>
-    <input type="text" id="gpsX" />
-    <input type="text" id="gpsY" />
+
         <main role="main" class="inner cover">
             <div class="mission-img">
                 <img src="img/img_gps2.png" alt="" class="img-responsive">
